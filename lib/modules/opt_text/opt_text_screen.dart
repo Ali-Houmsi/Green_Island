@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
@@ -30,6 +32,8 @@ class OptText extends StatefulWidget {
 }
 
 class _OptTextState extends State<OptText> {
+  get firestoreInstance => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +59,28 @@ class _OptTextState extends State<OptText> {
               onCompleted: (pin) async {
                 
                 print("Completed: " + pin);
-               DocumentSnapshot password = await FirebaseFirestore.instance.collection('Android').doc('Password').get();
+   
+  var document = await FirebaseFirestore.instance.collection('Android').doc('Password').get();
+  inspect(document);
+  //  var result = await firestoreInstance.instance
+  //      .collection("Android")
+  //      .doc('Passwords')
+  //     .get();
+  //      print(result);
+  //  document.parent. .forEach((res) {
+     
+  //    if(pin == res){
+        
+  //      print('res');
+  //    };
+  //    print('عذرا الرقم خاطئ');
+  //  }); شغلو خليه ينفذ هاد الك
+
+
+
+
+
+  //     print(result.data());
               },
             ),
           ),
@@ -64,3 +89,35 @@ class _OptTextState extends State<OptText> {
       );
   }
 }
+
+
+
+
+
+
+
+
+
+         //   DocumentSnapshot password = await FirebaseFirestore.instance.collection('Android').doc('Password').get();
+  //              firestoreInstance.collection("Android").get().then((querySnapshot) {
+  //   querySnapshot.docs.forEach((result) {
+  //     print(result.data());
+  //   });
+  // });
+  ////////////////////////////////////
+  //  var result = await firestoreInstance
+  //     .collection("Android")
+  //     .where("Password", whereIn: ["22222222"])
+  //     .get();
+  // result.docs.forEach((res) {
+  //   print('this is '+ res.data());
+  // });
+  /////////////////
+  //  var result = await firestoreInstance
+  //     .collection("Android")
+  //     .where("Passwords", isEqualTo: "33333333")
+      
+  //     .get();
+  // result.docs.forEach((res) {
+  //   print(res.data());
+  // });

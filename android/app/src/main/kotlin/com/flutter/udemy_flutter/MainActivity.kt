@@ -1,4 +1,4 @@
-package com.flutter.udemy_flutter
+package com.flutter.Green_Island
 
 import io.flutter.embedding.android.FlutterActivity
 
