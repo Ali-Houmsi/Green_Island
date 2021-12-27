@@ -60,29 +60,41 @@ class _OptTextState extends State<OptText> {
                 
                 print("Completed: " + pin);
    
-  var document = await FirebaseFirestore.instance.collection('Android').doc('Password').get();
-  inspect(document);
-  //  var result = await firestoreInstance.instance
-  //      .collection("Android")
-  //      .doc('Passwords')
-  //     .get();
-  //      print(result);
-  //  document.parent. .forEach((res) {
-     
-  //    if(pin == res){
-        
-  //      print('res');
-  //    };
-  //    print('عذرا الرقم خاطئ');
-  //  }); شغلو خليه ينفذ هاد الك
+//var document2=document.collection('Android').doc('Password').get();
+var document =  FirebaseFirestore.instance;
 
 
+   if(document == null)
+        print("the firebase didnt intialize");
+else{
 
+    var result = await document.collection("Android").doc("Password").get();
+       
+                 print(result);
+                 var x=result.data();
+                 print(x);
+  
+          List<dynamic>? y= x!['Password'] as List<dynamic>?;  
+              if(y== null)
+        print('nulllllllllllllllllllll');
 
+        else  {
+          y!.forEach((value){
+            print(pin.runtimeType + value);
+              if(pin.compareTo(value)==0){
+           print ('success');
+          }
+         // print('  false number');
+        }
+        );
+        }
+}
 
   //     print(result.data());
-              },
-            ),
+              
+              
+              
+           } ),
           ),
         ),
     ),
@@ -90,7 +102,16 @@ class _OptTextState extends State<OptText> {
   }
 }
 
+    // x!.forEach((value,key) {
+      //   //key==Password
+      //     // if(pin == value){
 
+      //     // print(value);
+      //     // print('success');
+      //     // }
+      //     // print('عذرا الرقم خاطئ');
+      //   },
+      //); 
 
 
 
